@@ -1,15 +1,15 @@
 export default class Airport {
-    /**
-     * 
-     * @param {String} name 
-     * @param {String} code 
+  /**
+     *
+     * @param {String} name
+     * @param {String} code
      */
-    constructor(name, code){
-        this._name = name;
-        this._code = code;
-    }
+  constructor(name, code) {
+    this._name = name;
+    this._code = code;
+  }
 
-    toString(){
+  toString() {
     return `[object ${this._code}]`;
-    }
+  }
 }
