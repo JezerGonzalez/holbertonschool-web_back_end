@@ -1,20 +1,20 @@
 export default class Pricing {
   /**
      *
-     * @param {Number} ammount
+     * @param {Number} amount
      * @param {Currency} currency
      */
-  constructor(ammount, currency) {
-    this._ammount = ammount;
+  constructor(amount, currency) {
+    this._amount = amount;
     this._currency = currency;
   }
 
-  get ammount() {
-    return this._ammount;
+  get amount() {
+    return this._amount;
   }
 
-  set ammount(ammount) {
-    this._ammount = ammount;
+  set amount(amount) {
+    this._amount = amount;
   }
 
   get currency() {
@@ -26,10 +26,10 @@ export default class Pricing {
   }
 
   displayFullPrice() {
-    return `${this._ammount} ${this._currency.displayFullCurrency()}`;
+    return `${this._amount} ${this._currency.displayFullCurrency()}`;
   }
 
-  static convertPrice(ammount, conversionRate) {
-    return ammount * conversionRate;
+  static convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
   }
 }
