@@ -12,9 +12,9 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
         value: result.value,
       };
     }
-    return {
+    return [{
       status: 'rejected',
       value: result.reason,
-    };
+    }];
   }));
 }
