@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Returns a tuple"""
-from typing import Any
+from typing import Union, Tuple
 
-def to_kv(k: str, v: Any) -> tuple:
+def to_kv(k: str, v: Union[int, float]) ->Tuple[str, float]:
     """return tuple"""
-    return (k, v)
+    return (k, float(v ** 2))
