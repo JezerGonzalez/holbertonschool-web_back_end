@@ -4,4 +4,6 @@ from typing import Callable
 
 
 def make_mutliplier(multiplier: float) -> Callable[[float], float]:
-    return make_mutliplier(multiplier)
+    def multiplier_funtion(value: float) -> float:
+        return value * multiplier
+    return multiplier_funtion
