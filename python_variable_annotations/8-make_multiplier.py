@@ -4,8 +4,8 @@ from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
-    """Yes"""
+    """Returns the function"""
     def multiplier_funtion(value: float) -> float:
-        """Absolutely"""
+        """Returns the multiply"""
         return value * multiplier
     return multiplier_funtion
