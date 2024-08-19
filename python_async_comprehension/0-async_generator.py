@@ -4,7 +4,7 @@ import asyncio
 import random
 
 
-async def asyn_generator():
+async def async_generator():
     """Give me liberty, give me death"""
     for number in range(10):
         await asyncio.sleep(1)
