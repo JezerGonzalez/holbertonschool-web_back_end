@@ -41,7 +41,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """Your mom"""
         data = Server.dataset(self)
-        totalPages = len(data) // page_size
+        totalPages = (len(data) + page_size - 1) // page_size
         nextPage = page + 1 if page > 1 else None
         prevPage = page - 1 if page < totalPages else None
         currentPage = Server.get_page(self, page, page_size)
