@@ -42,8 +42,8 @@ class Server:
         """Your mom"""
         data = Server.dataset(self)
         totalPages = (len(data) + page_size - 1) // page_size
-        nextPage = page + 1 if page > 1 else None
-        prevPage = page - 1 if page < totalPages else None
+        nextPage = page + 1 if page < totalPages else None
+        prevPage = page - 1 if page > 1 else None
         currentPage = Server.get_page(self, page, page_size)
         return {
             'page_size': page_size,
