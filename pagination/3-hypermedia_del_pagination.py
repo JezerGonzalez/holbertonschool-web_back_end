@@ -47,15 +47,12 @@ class Server:
         page_data = []
         tempIndex = index
 
-        for _ in range(page_size):
-            try:
-                page_data.append(dataset[tempIndex])
-                tempIndex += 1
-            except KeyError:
-                tempIndex += 1
-                page_data.append(dataset[tempIndex])
+        for data in range(page_size):
+            if not dataset.get(tempIndex):
                 tempIndex += 1
                 next_index += 1
+            page_data.append(dataset.get(tempIndex))
+            tempIndex += 1
 
         return {
             'index': index,
