@@ -1,0 +1,2 @@
+// Youve been hit by... Youve been struck by... A smooth criminal
+db.school.insert({ name: 'Holberton school' })
