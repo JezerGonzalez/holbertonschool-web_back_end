@@ -1,0 +1,2 @@
+//un comentario algarete
+db.school.deleteMany({name: 'Holberton school'})
