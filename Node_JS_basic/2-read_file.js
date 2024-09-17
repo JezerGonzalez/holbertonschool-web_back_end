@@ -3,7 +3,7 @@ const Fs = require('fs');
 function countStudents(path) {
   try {
     let databaseFile = Fs.readFileSync(path, 'utf8').toString();
-    databaseFile = databaseFile.split('\n').filter(line => line.trim() !== '');
+    databaseFile = databaseFile.split('\n').filter((line) => line.trim() !== '');
     databaseFile.shift();
     const numOfStudents = databaseFile.length;
     const result = [`Number of students: ${numOfStudents}`, [], []];
