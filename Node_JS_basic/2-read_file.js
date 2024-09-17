@@ -4,8 +4,7 @@ function countStudents(path) {
   try {
     let databaseFile = Fs.readFileSync(path, 'utf8').toString();
     databaseFile = databaseFile.split('\n');
-    databaseFile.shift();
-    const numOfStudents = databaseFile.length;
+    const numOfStudents = databaseFile.length - 1;
     const result = [`Number of students: ${numOfStudents}`, [], []];
     databaseFile.forEach((element) => {
       const resultElement = element.split(',');
