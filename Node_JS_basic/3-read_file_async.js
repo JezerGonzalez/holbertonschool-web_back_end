@@ -12,11 +12,11 @@ function countStudents(path) {
 
       const students = {
         CS: [],
-        SWE: [],
+        SWE: []
       };
 
       lines.forEach((line) => {
-        const [firstname, field] = line.split(',');
+        const [firstname, lastname, age, field] = line.split(',');
         if (field === 'CS') {
           students.CS.push(firstname);
         } else if (field === 'SWE') {
