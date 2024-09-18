@@ -1,37 +1,49 @@
-const fs = require('fs').promises;
+const fs = require('fs');
 
 function countStudents(path) {
-  return fs.readFile(path, 'utf8')
-    .then((data) => {
-      const lines = data.split('\n').filter((line) => line.trim() !== '');
-      const header = lines.shift();
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        reject(Error('Cannot load the database'));
+        return;
+      }
+      const response = [];
+      let msg;
 
-      if (!header) {
-        throw new Error('Cannot load the database');
+      const content = data.toString().split('\n');
+
+      let students = content.filter((item) => item);
+
+      students = students.map((item) => item.split(','));
+
+      const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
+      msg = `Number of students: ${NUMBER_OF_STUDENTS}`;
+      console.log(msg);
+
+      response.push(msg);
+
+      const fields = {};
+      for (const i in students) {
+        if (i !== 0) {
+          if (!fields[students[i][3]]) fields[students[i][3]] = [];
+
+          fields[students[i][3]].push(students[i][0]);
+        }
       }
 
-      const students = {
-        CS: [],
-        SWE: []
-      };
+      delete fields.field;
 
-      lines.forEach((line) => {
-        const [firstname, lastname, age, field] = line.split(',');
-        if (field === 'CS') {
-          students.CS.push(firstname);
-        } else if (field === 'SWE') {
-          students.SWE.push(firstname);
-        }
-      });
+      for (const key of Object.keys(fields)) {
+        msg = `Number of students in ${key}: ${fields[key].length
+        }. List: ${fields[key].join(', ')}`;
 
-      const totalStudents = students.CS.length + students.SWE.length;
-      console.log(`Number of students: ${totalStudents}`);
-      console.log(`Number of students in CS: ${students.CS.length}. List: ${students.CS.join(', ')}`);
-      console.log(`Number of students in SWE: ${students.SWE.length}. List: ${students.SWE.join(', ')}`);
-    })
-    .catch(() => {
-      throw new Error('Cannot load the database');
+        console.log(msg);
+
+        response.push(msg);
+      }
+      resolve(response);
     });
+  });
 }
 
 module.exports = countStudents;
