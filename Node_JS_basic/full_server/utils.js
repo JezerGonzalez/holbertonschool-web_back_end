@@ -16,8 +16,7 @@ function readDatabase(path) {
       const fields = {};
       for (const i in students) {
         if (i !== 0) {
-          if (!fields[students[i][3]])
-            fields[students[i][3]] = [];
+          if (!fields[students[i][3]]) { fields[students[i][3]] = []; }
           fields[students[i][3]].push(students[i][0]);
         }
       }
